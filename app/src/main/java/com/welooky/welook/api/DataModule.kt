@@ -18,7 +18,7 @@ val remoteModule = module {
     single { createApi<ApiStores>(get()) }
 }
 
-const val API_URL = "https://api.github.com"
+const val API_URL = "http://192.168.1.101:8088"
 const val CONNECTION_TIMEOUT = 60000L
 
 private fun provideOkHttpClient(): OkHttpClient {

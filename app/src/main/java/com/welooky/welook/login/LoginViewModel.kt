@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.welooky.welook.api.WeResponse
 import com.welooky.welook.entity.UserObj
 import com.welooky.welook.support.BaseViewModel
+import java.util.logging.Level
+import java.util.logging.Logger
 
 class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel() {
 
@@ -13,8 +15,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewMod
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        launch {
-            val result = loginRepository.login(username, password)
+        launch({ loginRepository.login(username, password) }) {
+            Logger.getLogger("tianming").log(Level.ALL, it?.content.toString())
+            loginResult.value = it
         }
 
     }

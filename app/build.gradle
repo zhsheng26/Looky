@@ -39,7 +39,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
     // koin
-    implementation "org.koin:koin-androidx-scope:2.0.0-GA4"
+    
+//    implementation "org.koin:koin-android:2.0.0-GA4"
+//    implementation "org.koin:koin-androidx-scope:2.0.0-GA4"
     implementation "org.koin:koin-androidx-viewmodel:2.0.0-GA4"
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.5.0")

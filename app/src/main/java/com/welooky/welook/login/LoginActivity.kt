@@ -1,6 +1,5 @@
 package com.welooky.welook.login
 
-import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +13,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.Observer
 import com.welooky.welook.R
 import com.welooky.welook.support.BaseActivity
+import com.welooky.welook.support.Coroutines
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
@@ -29,15 +29,17 @@ class LoginActivity : BaseActivity() {
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
+        val job = Coroutines.ioThenMain({
+            "dddd"
+        }, {
+
+        })
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
+            username.setText("new----------" + loginResult.content?.username)
 
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
         username.afterTextChanged {

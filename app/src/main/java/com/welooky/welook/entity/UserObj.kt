@@ -1,4 +1,6 @@
 package com.welooky.welook.entity
 
-class UserObj {
-}
+data class UserObj(
+    var username: String? = null,
+    var password: String? = null
+)
