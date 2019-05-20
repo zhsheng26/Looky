@@ -8,9 +8,9 @@ abstract class BaseViewModel : ViewModel() {
 
     fun <T : Any> launch(work: suspend (() -> T?), callback: ((T?) -> Unit)? = null) {
         jobs = jobs + CoroutineScope(Dispatchers.Main).launch {
-            val data = CoroutineScope(Dispatchers.IO).async {
-                return@async work()
-            }.await()
+            val data = withContext(Dispatchers.IO) {
+                work()
+            }
             callback?.let {
                 it(data)
             }
