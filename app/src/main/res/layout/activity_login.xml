@@ -10,7 +10,8 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".login.LoginActivity">
+        tools:context=".ui.login.LoginActivity"
+        tools:ignore="MissingDefaultResource">
 
     <EditText
             android:id="@+id/username"
@@ -19,7 +20,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="96dp"
             android:layout_marginEnd="24dp"
-
+            android:text="zhsheng@126.com"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="true"
@@ -36,6 +37,7 @@
             android:layout_marginEnd="24dp"
             android:hint="@string/prompt_password"
             android:imeActionLabel="@string/action_sign_in_short"
+            android:text="12233333"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:selectAllOnFocus="true"

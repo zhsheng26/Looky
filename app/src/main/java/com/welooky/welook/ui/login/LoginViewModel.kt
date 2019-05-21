@@ -1,4 +1,4 @@
-package com.welooky.welook.login
+package com.welooky.welook.ui.login
 
 import android.util.Patterns
 import androidx.lifecycle.MutableLiveData

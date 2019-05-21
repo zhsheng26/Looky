@@ -1,4 +1,4 @@
-package com.welooky.welook.login
+package com.welooky.welook.ui.login
 
 import com.welooky.welook.api.ApiStores
 import com.welooky.welook.api.WeResponse

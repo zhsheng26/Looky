@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-                android:name=".login.LoginActivity"
+                android:name="com.welooky.welook.ui.login.LoginActivity"
                 android:theme="@style/AppTheme.NoActionBar"
                 android:label="@string/title_activity_login">
         </activity>

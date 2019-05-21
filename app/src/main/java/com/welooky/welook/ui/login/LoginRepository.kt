@@ -1,4 +1,4 @@
-package com.welooky.welook.login
+package com.welooky.welook.ui.login
 
 import com.welooky.welook.api.WeResponse
 import com.welooky.welook.entity.UserObj

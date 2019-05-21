@@ -2,7 +2,7 @@ package com.welooky.welook
 
 import android.app.Application
 import com.welooky.welook.api.remoteModule
-import com.welooky.welook.api.repositoryModule
+import com.welooky.welook.ui.repositoryModule
 import com.welooky.welook.ui.uiModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
