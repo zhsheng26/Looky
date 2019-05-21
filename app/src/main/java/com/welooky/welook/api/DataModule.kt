@@ -19,13 +19,14 @@ val remoteModule = module {
 }
 
 const val API_URL = "http://192.168.1.101:8088"
-const val CONNECTION_TIMEOUT = 60000L
+const val CONNECTION_TIMEOUT = 6000L
 
 private fun provideOkHttpClient(): OkHttpClient {
     val client = OkHttpClient.Builder()
         .connectTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
         .readTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
         .writeTimeout(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS)
+        .addInterceptor(ExceptionInterceptor())
 
     if (BuildConfig.DEBUG) {
         val logging = HttpLoggingInterceptor()

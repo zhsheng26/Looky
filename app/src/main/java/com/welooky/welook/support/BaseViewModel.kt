@@ -8,7 +8,6 @@ abstract class BaseViewModel : ViewModel() {
 
     fun <T : Any> launch(work: suspend (() -> T?), callback: ((T?) -> Unit)? = null) {
         jobs = jobs + CoroutineScope(Dispatchers.Main).launch {
-            println(this.coroutineContext)
             val data = withContext(Dispatchers.IO) {
                 work()
             }
