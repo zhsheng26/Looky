@@ -1,6 +1,7 @@
 package com.welooky.welook
 
 import android.app.Application
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
 import com.welooky.welook.api.remoteModule
 import com.welooky.welook.ui.repositoryModule
 import com.welooky.welook.ui.uiModule
@@ -15,6 +16,7 @@ open class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        QMUISwipeBackActivityManager.init(this)
         startKoin {
             androidLogger()
             androidContext(this@App)

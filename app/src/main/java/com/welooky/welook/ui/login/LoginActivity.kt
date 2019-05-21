@@ -18,7 +18,6 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
         val username = findViewById<EditText>(R.id.username)
@@ -28,8 +27,7 @@ class LoginActivity : BaseActivity() {
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
             loading.visibility = View.GONE
-            username.setText(loginResult.content?.username)
-
+            longToast("登录成功")
         })
         loginViewModel.tipLiveData.observe(this, Observer {
             longToast(it)
@@ -46,10 +44,10 @@ class LoginActivity : BaseActivity() {
                 false
             }
 
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
-            }
+        }
+        login.setOnClickListener {
+            loading.visibility = View.VISIBLE
+            loginViewModel.login(username.text.toString(), password.text.toString())
         }
     }
 }
