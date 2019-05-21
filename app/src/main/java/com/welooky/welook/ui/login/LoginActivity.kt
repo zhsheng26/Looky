@@ -9,7 +9,7 @@ import android.widget.ProgressBar
 import androidx.lifecycle.Observer
 import com.welooky.welook.R
 import com.welooky.welook.support.BaseActivity
-import io.reactivex.Observable
+import org.jetbrains.anko.longToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
@@ -27,10 +27,12 @@ class LoginActivity : BaseActivity() {
         val loading = findViewById<ProgressBar>(R.id.loading)
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
             val loginResult = it ?: return@Observer
-
             loading.visibility = View.GONE
-            username.setText("new----------" + loginResult.content?.username)
+            username.setText(loginResult.content?.username)
 
+        })
+        loginViewModel.tipLiveData.observe(this, Observer {
+            longToast(it)
         })
         password.apply {
             setOnEditorActionListener { _, actionId, _ ->

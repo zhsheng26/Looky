@@ -15,7 +15,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewMod
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
-        launch({ loginRepository.login(username, password) }) {
+        launchNet({ loginRepository.login(username, password) }) {
             Logger.getLogger("tianming").log(Level.ALL, it?.content.toString())
             loginResult.value = it
         }
