@@ -2,6 +2,7 @@ package com.welooky.welook.support
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.welooky.welook.api.WeResponse
 import kotlinx.coroutines.*
 
@@ -9,10 +10,10 @@ abstract class BaseViewModel : ViewModel() {
 
     val tipLiveData = MutableLiveData<String>()
 
-    private var jobs = listOf<Job>()
+    private var job = Job()
 
     fun <T> launchNet(work: suspend (() -> WeResponse<T>?), callback: ((WeResponse<T>?) -> Unit)? = null) {
-        jobs = jobs + CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             val data = withContext(Dispatchers.IO) {
                 work()
             }
@@ -27,7 +28,7 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     fun <T : Any> launchWork(work: suspend (() -> T?), callback: ((T?) -> Unit)? = null) {
-        jobs = jobs + CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main + job).launch {
             val data = withContext(Dispatchers.IO) {
                 work()
             }
@@ -38,12 +39,12 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     fun launch(code: suspend CoroutineScope.() -> Unit) {
-        jobs = jobs + CoroutineScope(Dispatchers.Main).launch(block = code)
+        viewModelScope.launch(block = code)
     }
 
     override fun onCleared() {
+        job.cancel()
         super.onCleared()
-        jobs.forEach { it.cancel() }
     }
 
 }
