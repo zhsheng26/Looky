@@ -1,8 +1,9 @@
-package com.welooky.welook
+package com.welooky.welook.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import com.welooky.welook.R
 import com.welooky.welook.ui.login.LoginActivity
 import com.welooky.welook.support.BaseActivity
 import org.jetbrains.anko.find
